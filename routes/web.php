@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\HelloController;
 
 /*
@@ -19,6 +20,9 @@ Route::get('/', function () {
 });
 
 // Route::get('hello', 'App\Http\Controllers\HelloController@index');
-Route::get('hello', [HelloController::class, 'index']);
-Route::post('hello', [HelloController::class, 'create']);
-Route::get('world', [HelloController::class, 'world_message']);
+// Route::get('hello', [HelloController::class, 'index']);
+// Route::post('hello', [HelloController::class, 'create']);
+// Route::get('world', [HelloController::class, 'world_message']);
+
+Route::resource('posts', PostController::class);
+
