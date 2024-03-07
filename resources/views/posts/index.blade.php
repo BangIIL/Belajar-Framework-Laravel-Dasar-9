@@ -18,7 +18,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Blog Codepolitan</h1>
+        <h1>
+            Blog Codepolitan
+            <a href="{{ url('posts/create') }}" class="btn btn-success"> + Buat Postingan</a>
+        </h1>
         @foreach ($posts as $post)
         @php($post = explode(",", $post))
         <div class="card mb-3">
