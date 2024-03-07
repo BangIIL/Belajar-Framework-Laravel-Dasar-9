@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -13,20 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
+        $posts = Storage::get('posts.txt');
+        $posts = explode("\n", $posts);
         $view_data = [
-            'posts' => [
-                // Title
-                [
-                    "Mengenai Laravel",
-                    "Ini adalah blog tentang Laravel",
-                ],
-                [
-                    "Mengenai Codepolitan",
-                    "Ini adalah blog tentang Codepolitan",
-                ]
-            ],
+            'posts' => $posts
         ];
-
         return view('posts.index', $view_data);
     }
 
@@ -59,7 +51,19 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        echo "Halaman detail dari post, ID: $id";
+        $posts = Storage::get('posts.txt');
+        $posts = explode("\n", $posts);
+        $selected_post = Array();
+        foreach($posts as $post){
+            $post = explode(",", $post);
+            if ($post[0] === $id ) {
+                $selected_post = $post;
+            }
+        }
+        $view_data = [
+            'post'=> $selected_post,
+        ];
+        return view ('posts.show', $view_data);
     }
 
     /**
