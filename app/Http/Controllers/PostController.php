@@ -15,11 +15,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Storage::get('posts.txt');
-        $posts = explode("\n", $posts);
+        $posts = DB::table('posts')->get();
         $view_data = [
-            'posts' => $posts
+            'posts' => $posts,
         ];
+
         return view('posts.index', $view_data);
     }
 
