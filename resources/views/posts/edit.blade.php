@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Buat Postingan Baru</h1>
-    <form action="{{ url("posts/{$post->id}") }}" method="Post" class="form-control">
+    <form action="{{ url("posts/$post->id") }}" method="Post" class="form-control">
         @method('PATCH')
         @csrf
         <div class="mb-3">
@@ -22,7 +22,11 @@
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
-
+    <form action="{{ url("posts/$post->id") }}" method="POST" class="form-control">
+        @method('DELETE')
+        @csrf
+        <button type="submit" class="btn btn-danger">Hapus</button>
+    </form>
 <script src="{{ asset('bootstrap-5/js/bootstrap.bundle.min.js') }}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
