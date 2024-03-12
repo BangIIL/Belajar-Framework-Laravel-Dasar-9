@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')->get();
+        $posts = DB::table('posts')->where('active', true)->get();
         $view_data = [
             'posts' => $posts,
         ];
