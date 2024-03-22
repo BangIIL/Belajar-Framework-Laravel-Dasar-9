@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Selamat Datang')
-@endsection
+
 @section('content')
     <h1>
         Blog Codepolitan
