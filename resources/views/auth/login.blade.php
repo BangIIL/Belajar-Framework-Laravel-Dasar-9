@@ -9,7 +9,12 @@
             <div class="card-body">
                 <h1 class="text-center">Login</h1>
 
-                <form action="POST" action="{{ url('login') }}" class="form-control">
+                @if(session()->has('error_message'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error_message') }}
+                    </div>
+                @endif
+                <form method="POST" action="{{ url('login') }}" class="form-control">
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
