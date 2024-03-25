@@ -34,4 +34,14 @@ class AuthController extends Controller
 
         return redirect ('login');
     }
+
+    public function register_form()
+    {
+        return view('auth.register');
+    }
+
+    public function register()
+    {
+
+    }
 }
