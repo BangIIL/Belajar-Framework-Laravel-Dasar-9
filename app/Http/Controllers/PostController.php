@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BlogPosted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -63,6 +64,8 @@ class PostController extends Controller
             'title' => $title,
             'content' => $content,
         ]);
+
+        \Mail::to('donatasyaprilla@gmail.com')->send(new BlogPosted);
         return redirect('posts');
     }
 
